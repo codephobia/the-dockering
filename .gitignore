@@ -1,0 +1,6 @@
+node/app/node_modules
+
+# Terraform
+deploy/.terraform
+deploy/terraform.tfstate
+deploy/terraform.tfstate.backup

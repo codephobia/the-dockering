@@ -1,0 +1,46 @@
+version: "3"
+services:
+  nginx-app:
+    image: codephobia/the-dockering-nginx:1.0.0
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8000:80"
+    networks:
+      - appnet
+  node-app:
+    image: codephobia/the-dockering-node:1.0.0
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "3000:3000"
+    networks:
+      - appnet
+  go-app:
+    image: codephobia/the-dockering-go:1.0.0
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8080:8080"
+    networks:
+      - appnet
+networks:
+  appnet:
